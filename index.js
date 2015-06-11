@@ -1,6 +1,6 @@
 var through = require('through2')
 var path = require('path')
-var chokidar = require('chokidar')
+var gaze = require('gaze')
 var xtend = require('xtend')
 
 module.exports = watchify
@@ -101,7 +101,7 @@ function watchify (b, opts) {
     var w = b._watcher(dep, wopts)
     w.setMaxListeners(0)
     w.on('error', b.emit.bind(b, 'error'))
-    w.on('change', function () {
+    w.on('all', function () {
       invalidate(file)
     })
     fwatchers[file].push(w)
@@ -113,7 +113,7 @@ function watchify (b, opts) {
     if (pkgcache) delete pkgcache[id]
     if (fwatchers[id]) {
       fwatchers[id].forEach(function (w) {
-        w.close()
+        w.remove(id)
       })
       delete fwatchers[id]
       delete fwatcherFiles[id]
@@ -136,7 +136,7 @@ function watchify (b, opts) {
   }
 
   b._watcher = function (file, opts) {
-    return chokidar.watch(file, opts)
+    return gaze(file, opts)
   }
 
   return b

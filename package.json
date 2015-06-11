@@ -1,12 +1,11 @@
 {
-  "name": "watchify",
+  "name": "gazeify",
   "version": "3.2.2",
   "description": "watch mode for browserify builds",
   "main": "index.js",
   "bin": "bin/cmd.js",
   "dependencies": {
     "browserify": "^10.0.0",
-    "chokidar": "^1.0.0",
     "defined": "^1.0.0",
     "outpipe": "^1.1.0",
     "through2": "~0.6.3",
