@@ -1,5 +1,5 @@
 var test = require('tape')
-var watchify = require('../')
+var gazeify = require('../')
 var browserify = require('browserify')
 var vm = require('vm')
 
@@ -9,7 +9,7 @@ var mkdirp = require('mkdirp')
 var split = require('split')
 
 var os = require('os')
-var tmpdir = path.join((os.tmpdir || os.tmpDir)(), 'watchify-' + Math.random())
+var tmpdir = path.join((os.tmpdir || os.tmpDir)(), 'gazeify-' + Math.random())
 
 var file = path.join(tmpdir, 'main.js')
 
@@ -18,7 +18,7 @@ fs.writeFileSync(file, 'console.log(555)')
 
 test('api', function (t) {
   t.plan(5)
-  var w = watchify(browserify(file, watchify.args))
+  var w = gazeify(browserify(file, gazeify.args))
   w.on('update', function () {
     w.bundle(function (err, src) {
       t.ifError(err)

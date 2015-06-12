@@ -1,5 +1,5 @@
 var test = require('tape')
-var watchify = require('../')
+var gazeify = require('../')
 var browserify = require('browserify')
 var vm = require('vm')
 
@@ -8,7 +8,7 @@ var path = require('path')
 var mkdirp = require('mkdirp')
 
 var os = require('os')
-var tmpdir = path.join((os.tmpdir || os.tmpDir)(), 'watchify-' + Math.random())
+var tmpdir = path.join((os.tmpdir || os.tmpDir)(), 'gazeify-' + Math.random())
 
 var files = {
   main: path.join(tmpdir, 'main.js'),
@@ -35,7 +35,7 @@ fs.writeFileSync(files.xyz, 'module.exports = "xyz";')
 test('properly caches exposed files', function (t) {
   t.plan(4)
   var cache = {}
-  var w = watchify(browserify({
+  var w = gazeify(browserify({
     entries: [files.main],
     basedir: tmpdir,
     cache: cache,

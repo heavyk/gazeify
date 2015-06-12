@@ -1,5 +1,5 @@
 var test = require('tape')
-var watchify = require('../')
+var gazeify = require('../')
 var browserify = require('browserify')
 var vm = require('vm')
 
@@ -9,7 +9,7 @@ var mkdirp = require('mkdirp')
 var split = require('split')
 
 var os = require('os')
-var tmpdir = path.join((os.tmpdir || os.tmpDir)(), 'watchify-' + Math.random())
+var tmpdir = path.join((os.tmpdir || os.tmpDir)(), 'gazeify-' + Math.random())
 
 var files = {
   main: path.join(tmpdir, 'main.js'),
@@ -26,7 +26,7 @@ fs.writeFileSync(files.lines, 'beep\nboop')
 
 test('api with brfs', function (t) {
   t.plan(5)
-  var w = watchify(browserify(files.main, watchify.args))
+  var w = gazeify(browserify(files.main, gazeify.args))
   w.transform('brfs')
   w.on('update', function () {
     w.bundle(function (err, src) {

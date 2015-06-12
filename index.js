@@ -4,12 +4,12 @@ var gaze = require('gaze')
 var xtend = require('xtend')
 var minimatch = require('minimatch')
 
-module.exports = watchify
+module.exports = gazeify
 module.exports.args = {
   cache: {}, packageCache: {}
 }
 
-function watchify (b, opts) {
+function gazeify (b, opts) {
   if (!opts) opts = {}
   var cache = b._options.cache
   var pkgcache = b._options.packageCache

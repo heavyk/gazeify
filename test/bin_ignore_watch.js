@@ -7,7 +7,7 @@ var split = require('split')
 
 var cmd = path.resolve(__dirname, '../bin/cmd.js')
 var os = require('os')
-var tmpdir = path.join((os.tmpdir || os.tmpDir)(), 'watchify-' + Math.random())
+var tmpdir = path.join((os.tmpdir || os.tmpDir)(), 'gazeify-' + Math.random())
 
 var files = {
   main: path.join(tmpdir, 'main.js'),

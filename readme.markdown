@@ -1,8 +1,8 @@
-# watchify
+# gazeify
 
 watch mode for [browserify](https://github.com/substack/node-browserify) builds
 
-[![build status](https://secure.travis-ci.org/substack/watchify.png)](http://travis-ci.org/substack/watchify)
+[![build status](https://secure.travis-ci.org/heavyk/gazeify.png)](http://travis-ci.org/heavyk/gazeify)
 
 Update any source file and your browserify bundle will be recompiled on the
 spot.
@@ -10,7 +10,7 @@ spot.
 # example
 
 ```
-$ watchify main.js -o static/bundle.js
+$ gazeify main.js -o static/bundle.js
 ```
 
 Now as you update files, `static/bundle.js` will be automatically incrementally rebuilt on
@@ -20,17 +20,17 @@ The `-o` option can be a file or a shell command (not available on Windows)
 that receives piped input:
 
 ``` sh
-watchify main.js -o 'exorcist static/bundle.js.map > static/bundle.js' -d
+gazeify main.js -o 'exorcist static/bundle.js.map > static/bundle.js' -d
 ```
 
 ``` sh
-watchify main.js -o 'uglifyjs -cm > static/bundle.min.js'
+gazeify main.js -o 'uglifyjs -cm > static/bundle.min.js'
 ```
 
 You can use `-v` to get more verbose output to show when a file was written and how long the bundling took (in seconds):
 
 ```
-$ watchify browser.js -d -o static/bundle.js -v
+$ gazeify browser.js -d -o static/bundle.js -v
 610598 bytes written to static/bundle.js (0.23 seconds)
 610606 bytes written to static/bundle.js (0.10 seconds)
 610597 bytes written to static/bundle.js (0.14 seconds)
@@ -41,58 +41,58 @@ $ watchify browser.js -d -o static/bundle.js -v
 
 # usage
 
-Use `watchify` with all the same options as `browserify` except that `-o` (or
+Use `gazeify` with all the same options as `browserify` except that `-o` (or
 `--outfile`) is mandatory. Additionally, there are also:
 
 ```
 Standard Options:
 
-  --outfile=FILE, -o FILE
+	--outfile=FILE, -o FILE
 
-    This option is required. Write the browserify bundle to this file. If
-    the file contains the operators `|` or `>`, it will be treated as a
-    shell command, and the output will be piped to it (not available on
-    Windows).
+		This option is required. Write the browserify bundle to this file. If
+		the file contains the operators `|` or `>`, it will be treated as a
+		shell command, and the output will be piped to it (not available on
+		Windows).
 
-  --verbose, -v                     [default: false]
+	--verbose, -v                     [default: false]
 
-    Show when a file was written and how long the bundling took (in
-    seconds).
+		Show when a file was written and how long the bundling took (in
+		seconds).
 
-  --version
+	--version
 
-    Show the watchify and browserify versions with their module paths.
+		Show the gazeify and browserify versions with their module paths.
 ```
 
 ```
 Advanced Options:
 
-  --delay                           [default: 600]
+	--delay                           [default: 600]
 
-    Amount of time in milliseconds to wait before emitting an "update"
-    event after a change.
+		Amount of time in milliseconds to wait before emitting an "update"
+		event after a change.
 
-  --ignore-watch=GLOB, --iw GLOB    [default: false]
+	--ignore-watch=GLOB, --iw GLOB    [default: false]
 
-    Ignore monitoring files for changes that match the pattern. Omitting
-    the pattern will default to "**/node_modules/**".
+		Ignore monitoring files for changes that match the pattern. Omitting
+		the pattern will default to "**/node_modules/**".
 
-  --poll=INTERVAL                   [default: false]
+	--poll=INTERVAL                   [default: false]
 
-    Use polling to monitor for changes. Omitting the interval will default
-    to 100ms. This option is useful if you're watching an NFS volume.
+		Use polling to monitor for changes. Omitting the interval will default
+		to 100ms. This option is useful if you're watching an NFS volume.
 ```
 
 # methods
 
 ``` js
-var watchify = require('watchify');
-var fromArgs = require('watchify/bin/args');
+var gazeify = require('gazeify');
+var fromArgs = require('gazeify/bin/args');
 ```
 
-## var w = watchify(b, opts)
+## var w = gazeify(b, opts)
 
-Wrap a browserify bundle `b` with watchify, returning the wrapped bundle
+Wrap a browserify bundle `b` with gazeify, returning the wrapped bundle
 instance as `w`.
 
 When creating the browserify instance `b` you MUST set these properties in the
@@ -100,14 +100,14 @@ constructor:
 
 ``` js
 var b = browserify({ cache: {}, packageCache: {} });
-var w = watchify(b);
+var w = gazeify(b);
 ```
 
 You can also just do:
 
 ``` js
-var b = browserify(watchify.args);
-var w = watchify(b);
+var b = browserify(gazeify.args);
+var w = gazeify(b);
 ```
 
 `w` is exactly like a browserify bundle except that caches file contents and
@@ -135,7 +135,7 @@ Close all the open watch handles.
 
 ## var w = fromArgs(args)
 
-Create a watchify instance `w` from an array of arguments `args`. The required
+Create a gazeify instance `w` from an array of arguments `args`. The required
 constructor parameters will be set up automatically.
 
 # events
@@ -168,26 +168,15 @@ with the number of bytes in the bundle X and the time in seconds Y.
 With [npm](https://npmjs.org) do:
 
 ```
-$ npm install -g watchify
+$ npm install -g gazeify
 ```
 
-to get the watchify command and:
+to get the gazeify command and:
 
 ```
-$ npm install watchify
+$ npm install gazeify
 ```
 
 to get just the library.
 
-# troubleshooting
-
-## rebuilds on OS X never trigger
-
-It may be related to a bug in `fsevents` (see [#250](https://github.com/substack/watchify/issues/205#issuecomment-98672850)
-and [SO](http://stackoverflow.com/questions/26708205/webpack-watch-isnt-compiling-changed-files/28610124#28610124)).
-Try the `--poll` flag and/or renaming the project's directory - that might
-help.
-
-# license
-
-MIT
+# Unlicense

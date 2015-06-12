@@ -1,5 +1,5 @@
 var test = require('tape')
-var watchify = require('../')
+var gazeify = require('../')
 var browserify = require('browserify')
 var vm = require('vm')
 
@@ -9,7 +9,7 @@ var mkdirp = require('mkdirp')
 var through = require('through2')
 
 var os = require('os')
-var tmpdir = path.join((os.tmpdir || os.tmpDir)(), 'watchify-' + Math.random())
+var tmpdir = path.join((os.tmpdir || os.tmpDir)(), 'gazeify-' + Math.random())
 
 var main = path.join(tmpdir, 'main.js')
 var file = path.join(tmpdir, 'dep.jsnum')
@@ -35,9 +35,9 @@ function someTransform (file) {
 
 test('errors in transform', function (t) {
   t.plan(6)
-  var b = browserify(main, watchify.args)
+  var b = browserify(main, gazeify.args)
   b.transform(someTransform)
-  var w = watchify(b)
+  var w = gazeify(b)
   w.bundle(function (err, src) {
     t.ifError(err)
     t.equal(run(src), '555\n')
