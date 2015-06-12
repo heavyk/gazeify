@@ -24,10 +24,9 @@ function watchify (b, opts) {
       : '**/node_modules/**'
   }
   if (opts.poll || typeof opts.poll === 'number') {
-    wopts.usePolling = true
-    wopts.interval = opts.poll !== true
-      ? opts.poll
-      : undefined
+    wopts.mode = 'poll'
+    if (opts.poll !== true)
+      wopts.interval = opts.poll
   }
 
   if (cache) {
