@@ -1,8 +1,9 @@
 # gazeify
 
-watch mode for [browserify](https://github.com/substack/node-browserify) builds
+[browserify](https://github.com/substack/node-browserify) build watcher (a drop-in replacement for [watchify](https://github.com/substack/watchify))
 
 [![build status](https://secure.travis-ci.org/heavyk/gazeify.png)](http://travis-ci.org/heavyk/gazeify)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 Update any source file and your browserify bundle will be recompiled on the
 spot.
