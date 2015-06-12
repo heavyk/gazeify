@@ -48,8 +48,7 @@ test('api ignore watch', function (t) {
         fs.writeFileSync(files.boop, 'module.exports = "BOOP";')
         fs.writeFileSync(files.robot, 'module.exports = "ROBOT";')
       })
-    }
-    else if (lineNum === 2) {
+    } else if (lineNum === 2) {
       run(files.bundle, function (err, output) {
         t.ifError(err)
         t.equal(output, 'beep BOOP ROBOT\n')

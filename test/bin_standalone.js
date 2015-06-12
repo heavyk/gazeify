@@ -29,8 +29,7 @@ test('bin with standalone', function (t) {
         t.equal(output, '555\n')
         fs.writeFile(files.main, 'console.log(333)')
       })
-    }
-    else if (lineNum === 2) {
+    } else if (lineNum === 2) {
       run(files.bundle, function (err, output) {
         t.ifError(err)
         t.equal(output, '333\n')

@@ -39,8 +39,7 @@ test('bin brfs', function (t) {
         t.equal(output, 'BEEP\nBOOP\n')
         fs.writeFile(files.lines, 'robo-bOOgie')
       })
-    }
-    else if (lineNum === 2) {
+    } else if (lineNum === 2) {
       run(files.bundle, function (err, output) {
         t.ifError(err)
         t.equal(output, 'ROBO-BOOGIE\n')

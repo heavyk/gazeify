@@ -1,1 +1,1 @@
-module.exports = function (n) { return n * 11 };
+module.exports = function (n) { return n * 11 }

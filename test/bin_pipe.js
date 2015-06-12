@@ -38,8 +38,7 @@ test('bin with pipe', function (t) {
         t.equal(output, '555\n')
         fs.writeFile(files.main, 'console.log(9+9+333)')
       })
-    }
-    else if (lineNum === 2) {
+    } else if (lineNum === 2) {
       run(files.bundle, function (err, output) {
         t.ifError(err)
         t.equal(output, '333\n')

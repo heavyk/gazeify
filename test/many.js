@@ -33,7 +33,7 @@ var edits = [
   { file: 'lines', source: 't-rex' },
   {
     file: 'robot',
-    source: 'module.exports = function (n) { return n * 100 }',
+    source: 'module.exports = function (n) { return n * 100 }'
   }
 ]
 
@@ -63,7 +63,6 @@ test('many edits', function (t) {
   ])
   ps.stdout.pipe(process.stdout)
   ps.stderr.pipe(process.stdout)
-  var lineNum = 0
   ps.stderr.pipe(split()).on('data', function (line) {
     if (line.length === 0) return
 
