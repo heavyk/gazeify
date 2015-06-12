@@ -1,11 +1,12 @@
 {
   "name": "gazeify",
-  "version": "3.2.2",
-  "description": "watch mode for browserify builds",
+  "version": "1.0.0",
+  "description": "browserify build watcher (drop-in replacement for watchify)",
   "main": "index.js",
   "bin": "bin/cmd.js",
   "dependencies": {
     "browserify": "^10.0.0",
+    "gaze": "^0.6.4",
     "defined": "^1.0.0",
     "minimatch": "^2.0.8",
     "outpipe": "^1.1.0",
@@ -24,9 +25,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/substack/watchify.git"
+    "url": "git://github.com/heavyk/gazeify.git"
   },
-  "homepage": "https://github.com/substack/watchify",
+  "homepage": "https://github.com/heavyk/gazeify",
   "keywords": [
     "browserify",
     "browserify-tool",
@@ -36,9 +37,8 @@
     "browser"
   ],
   "author": {
-    "name": "James Halliday",
-    "email": "mail@substack.net",
-    "url": "http://substack.net"
+    "name": "Kenneth Bentley",
+    "email": "mechanicofthesequence@gmail.com"
   },
-  "license": "MIT"
+  "license": "Unlicense"
 }
