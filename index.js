@@ -2,6 +2,7 @@ var through = require('through2')
 var path = require('path')
 var gaze = require('gaze')
 var xtend = require('xtend')
+var minimatch = require('minimatch')
 
 module.exports = watchify
 module.exports.args = {
@@ -94,6 +95,7 @@ function watchify (b, opts) {
 
   function watchFile (file, dep) {
     dep = dep || file
+    if (wopts.ignored && minimatch(dep, wopts.ignored)) return
     if (!fwatchers[file]) fwatchers[file] = []
     if (!fwatcherFiles[file]) fwatcherFiles[file] = []
     if (fwatcherFiles[file].indexOf(dep) >= 0) return
